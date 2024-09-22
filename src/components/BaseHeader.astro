@@ -1,0 +1,120 @@
+---
+import {getAbsoluteLocaleUrl} from "astro:i18n";
+import {localeList} from "../lib/locales";
+import {all_pages} from "../lib/pages";
+
+const currentLocale = Astro.currentLocale ?? 'en';
+
+
+function getPageLabel(page: string) {
+    return locale_pages?.pages.filter(page_obj => page_obj.page === page)[0]?.label;
+}
+
+const locale_pages = all_pages.filter((page) => { return page.locale === currentLocale })[0];
+
+function getCurrentUrlLastSegment(): string {
+    const last = Astro.url.pathname.substring(Astro.url.pathname.lastIndexOf('/')+1);
+    console.log(last);
+    return last;
+}
+---
+<header class="bg-white print:hidden">
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+                <div></div>
+                <div class="flex items-center">
+                    <div class="sm:ml-6 sm:block">
+                        <div class="flex space-x-4 ">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a href={getAbsoluteLocaleUrl(currentLocale, '/', {})} class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">{getPageLabel('index')}</a>
+                            <a href={getAbsoluteLocaleUrl(currentLocale, 'blog', {})} class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">{getPageLabel('blog')}</a>
+                            <a href={getAbsoluteLocaleUrl(currentLocale, 'resume', {})} class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">{getPageLabel('resume')}</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="relative ml-3">
+                        <div class="flex flex-row items-center" id="language-selector-container" role="menu">
+                            <input id="language-selector" type="checkbox" aria-hidden="true">
+                            <div id="language-icon-group" class="flex items-center p-2 rounded-md">
+                                <label id="language-selector-label" for="language-selector" role="button" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-label="multi language icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-white">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802" />
+                                    </svg>
+                                </label>
+                                <div id="chevron-down">
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-label="chevron pointing down, language selector is closed" viewBox="0 0 24 24" fill="currentColor" class="size-3 stroke-white">
+                                        <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div id="chevron-up">
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-label="chevron pointing up, language selector is open" viewBox="0 0 24 24" fill="currentColor" class="size-3 stroke-white">
+                                        <path fill-rule="evenodd" d="M11.47 7.72a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06L12 9.31l-6.97 6.97a.75.75 0 0 1-1.06-1.06l7.5-7.5Z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div id="language-options" class="absolute block top-7 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                                <ul role="group">
+                                    {
+                                        localeList.map((locale, index) => (
+                                            <li>
+                                                <a class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="0" id=`language-selection-${index}` href={
+                                                    getAbsoluteLocaleUrl(
+                                                        locale.locale,
+                                                        getCurrentUrlLastSegment(),
+                                                        {}
+                                                    )}>
+                                                    {locale.flag} {locale.label}
+                                                </a>
+                                            </li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<style>
+    #language-icon-group:hover {
+        --tw-bg-opacity: 1;
+        background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+    }
+
+    #language-selector ~ #language-icon-group > #chevron-down {
+        display: block;
+    }
+
+    #language-selector ~ #language-icon-group > #chevron-up {
+        display: none;
+    }
+
+    #language-selector:checked ~ #language-icon-group > #chevron-down {
+        display: none;
+    }
+
+    #language-selector:checked ~ #language-icon-group > #chevron-up {
+        display: block;
+    }
+
+    #language-selector ~ #language-options {
+        right: 150vw;
+    }
+
+    #language-selector:checked ~ #language-options {
+        right: 0;
+    }
+
+    #language-selector {
+        display: none;
+    }
+
+    #language-options li > a:hover {
+        --tw-bg-opacity: 1;
+        background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+    }
+</style>
