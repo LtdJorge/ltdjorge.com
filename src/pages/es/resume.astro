@@ -1,0 +1,326 @@
+---
+import ResumeLayout from '~/layouts/Resume.astro'
+import Main from '~/components/resume/Main.astro';
+import Section from '~/components/resume/Section.astro';
+import EmploymentCard from '~/components/resume/EmploymentCard.astro';
+import EmploymentCardEntry from '~/components/resume/EmploymentCardEntry.astro';
+import ChronologyItem from '~/components/resume/ChronologyItem.astro';
+import H1 from '~/components/resume/H1.astro';
+import H2 from '~/components/resume/H2.astro';
+import H3 from '~/components/resume/H3.astro';
+import Badge from '~/components/resume/Badge.astro';
+
+import profilePicture from '~/img/profile.jpg'
+import { Picture } from 'astro:assets'
+---
+<ResumeLayout>
+    <Main>
+        <div class="flex flex-col items-center pt-4">
+            <H1 css_class="underline">
+                <Fragment>
+                    Jorge López Tello
+                </Fragment>
+            </H1>
+            <div class="flex flex-col lg:grid lg:grid-cols-3">
+                <div class="flex flex-col print:order-2">
+                    <Section css_class="print:order-1">
+                        <H2 css_class="pb-2 p-0">Información de contacto</H2>
+                        <ul class="pb-3">
+                            <li>📍 Toledo, España</li>
+                            <li>🌐 <a class="underline text-blue-600 visited:text-purple-600"
+                                     href="https://ltdjorge.com">https://ltdjorge.com</a></li>
+                            <li>⌨️ <a class="underline text-blue-600 visited:text-purple-600"
+                                      href="https://github.com/LtdJorge">github.com/LtdJorge</a></li>
+                            <li>⌨️ <a class="underline text-blue-600 visited:text-purple-600"
+                                      href="https://gitlab.com/LtdJorge">gitlab.com/LtdJorge</a></li>
+                            <li>📧 <a class="underline text-blue-600 visited:text-purple-600"
+                                     href="mailto:jorgekq@hotmail.com">jorgekq@hotmail.com</a></li>
+                        </ul>
+                    </Section>
+                    <div class="hidden print:block print:mb-8 print:order-2" />
+                    <Section css_class="order-3">
+                        <H2 css_class="pb-2">
+                            Educación y certificaciones
+                        </H2>
+                        <EmploymentCard>
+                            <Fragment>
+                                <EmploymentCardEntry>
+                                    <Fragment slot="name">
+                                        Escuela de Organización Industrial
+                                    </Fragment>
+                                    <Fragment slot="items">
+                                        <ChronologyItem dates="2021">
+                                            <Fragment slot="label">
+                                                Curso de E-Commerce y Marketing Digital, Comercio electrónico
+                                                <Badge color="amber">Tecnologías web</Badge>
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Implementación como proyecto final de una aplicación web totalmente <i>dockerizada</i>, sirviendo
+                                                como repositorio web sobre especificaciones de ordenadores portátiles y como motor de filtrado.
+                                                Frontend en Nuxt 2 y backend con Strapi, con MariaDB como almacenamiento y MeiliSearch como motor de
+                                                búsqueda y filtrado en tiempo real.<br>
+                                                Incluido también el plan de negocio completo para el proyecto, con análisis de la competencia y
+                                                estudio de márketing.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                    </Fragment>
+                                </EmploymentCardEntry>
+                                <EmploymentCardEntry>
+                                    <Fragment slot="name">
+                                        CampusFP Emprende
+                                    </Fragment>
+                                    <Fragment slot="items">
+                                        <ChronologyItem dates="octubre 2022 - septiembre 2024">
+                                            <Fragment slot="label">
+                                                Técnico superior en Animación 3D, videojuegos y entornos interactivos
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Creación de una visualización arquitectónica realista de una vivienda completa, con enfoque en el
+                                                interior. Usados 3D Max para modelado, Substance Painter/Designer para texturizado y SpeedTree para
+                                                vegetación. Finalmente armado en Unity y hecho interactivo con C#, con iluminación pre-renderizada
+                                                para aumentar el rendimiento (escena estática).
+                                            </Fragment>
+                                        </ChronologyItem>
+                                    </Fragment>
+                                </EmploymentCardEntry>
+                                <EmploymentCardEntry>
+                                    <Fragment slot="name">
+                                        NVIDIA DLI + Universidad de Málaga
+                                    </Fragment>
+                                    <Fragment slot="items">
+                                        <ChronologyItem dates="2020">
+                                            <Fragment slot="label">
+                                                Fundamentals of Deep Learning for Computer Vision
+                                                <Badge color="blue">Python</Badge>
+                                                <Badge color="emerald">RAPIDS</Badge>
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Impartido por Manuel Ujaldón. Certificación entregada por NVIDIA.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                        <ChronologyItem dates="2020">
+                                            <Fragment slot="label">
+                                                Fundamentals of accelerated computing with CUDA C/C++
+                                                <Badge color="rose">C/C++</Badge>
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Impartido por Manuel Ujaldón. Certificación entregada por NVIDIA.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                    </Fragment>
+                                </EmploymentCardEntry>
+                                <EmploymentCardEntry>
+                                    <Fragment slot="name">
+                                        CampusFP Emprende
+                                    </Fragment>
+                                    <Fragment slot="items">
+                                        <ChronologyItem>
+                                            <Fragment slot="label">
+                                                C1 Advanced
+                                                <Badge color="yellow">English</Badge>
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                201 puntos - sobresaliente (nivel CEFR C2)
+                                            </Fragment>
+                                        </ChronologyItem>
+                                        <ChronologyItem>
+                                            <Fragment slot="label">
+                                                B2 First
+                                                <Badge color="yellow">English</Badge>
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                176 puntos - notable
+                                            </Fragment>
+                                        </ChronologyItem>
+                                    </Fragment>
+                                </EmploymentCardEntry>
+                            </Fragment>
+                        </EmploymentCard>
+                    </Section>
+                </div>
+                <div class="flex flex-col print:order-1">
+                    <Section css_class="">
+                        <H2 css_class="pb-2">
+                            Experiencia laboral
+                        </H2>
+                        <EmploymentCard>
+                            <Fragment>
+                                <EmploymentCardEntry>
+                                    <Fragment slot="name">
+                                        Sabio España
+                                    </Fragment>
+                                    <Fragment slot="items">
+                                        <ChronologyItem dates="octubre 2022 - septiembre 2024">
+                                            <Fragment slot="label">
+                                                Genesys PureEngage Technical Support
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Tarea principal:
+                                                <br>
+                                                <p class="pl-2">
+                                                    Técnico dedicado para cliente de Telefónica Soluciones tanto en
+                                                    España como Gran Bretaña, trabajando en remoto.
+                                                    <br>
+                                                    Principalmente trabajando con servicios de Engage, ServiceNow e
+                                                    hilos de correo con cliente.
+                                                    Otras veces con NICE Engage y WFM, SAP BO y Oracle DBMS.
+                                                </p>
+                                                <br>
+                                                Al ser ofrecido como apoyo a compañeros en otro cliente:
+                                                <br>
+                                                <p class="pl-2">
+                                                    Uso de la API PureCloud y herramientas de línea de comando como
+                                                    <i>cURL</i> y <i>jq</i> para filtrar, listar y estrechar la búsqueda
+                                                    de cientos de usuarios con una combinación de rol/división errónea,
+                                                    corrigiéndolos después.
+                                                </p>
+                                            </Fragment>
+                                        </ChronologyItem>
+                                        <ChronologyItem dates="marzo 2022 - octubre 2022">
+                                            <Fragment slot="label">
+                                                Service Desk Engineer
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Soporte de soluciones telefónicas en equipo rotativo 24x7. Genesys
+                                                PureEngage, PureConnect, NICE Engage para múltiples clientes.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                    </Fragment>
+                                </EmploymentCardEntry>
+                            </Fragment>
+                        </EmploymentCard>
+                        <EmploymentCard>
+                            <Fragment>
+                                <EmploymentCardEntry>
+                                    <Fragment slot="name">
+                                        Grupo Hotel Comendador
+                                    </Fragment>
+                                    <Fragment slot="items">
+                                        <ChronologyItem dates="septiembre 2018 - presente">
+                                            <Fragment slot="label">
+                                                Administrador web
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Despliegue y mantenimiento de la nueva web, para edición por equipo no
+                                                técnico. Digital Ocean, Ubuntu Server LTS, Nginx, PHP-FPM, MariaDB,
+                                                Wordpress y Cloudflare.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                        <ChronologyItem dates="enero 2017 - octubre 2017">
+                                            <Fragment slot="label">
+                                                Técnico de mantenimiento
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Mantenimiento general de instalaciones, incluyendo jardines, maquinaria SPA y equipos de IT.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                        <ChronologyItem dates="2014 - 2019">
+                                            <Fragment slot="label">
+                                                Cocina y almacén para eventos
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Inicialmente logística de mercaderías. Después, apoyo general en cocina.
+                                                Finalmente, cocinero dedicado en parrilla de carbón para restaurante.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                    </Fragment>
+                                </EmploymentCardEntry>
+                            </Fragment>
+                        </EmploymentCard>
+
+                    </Section>
+                </div>
+                <div class="flex flex-col print:order-4">
+                    <Section css_class="print:order-1">
+                        <H2 css_class="pb-2">
+                            Habilidades técnicas
+                        </H2>
+                        <div>
+                            <div>
+                                <Badge color="orange">Rust</Badge>
+                                <Badge color="yellow">JavaScript & TypeScript</Badge>
+                                <Badge color="rose">C/C++</Badge>
+                                <Badge color="sky">Postgres</Badge>
+                            </div>
+                            <div>
+                                <Badge color="violet">Ansible + Terraform</Badge>
+                                <Badge color="blue">Linux and Windows administration</Badge>
+                                <Badge color="amber">Web technologies</Badge>
+                            </div>
+                            <div>
+
+                                <Badge color="orange">Video-games and 3D</Badge>
+                                <Badge color="green">GPU programming</Badge>
+                                <Badge color="zinc">Command line tools</Badge>
+                            </div>
+                            <div>
+                                <Badge color="fuchsia">L2/L3 Networks</Badge>
+                                <Badge color="slate">POSIX</Badge>
+                            </div>
+                        </div>
+                    </Section>
+                    <div class="hidden print:block print:mb-2 print:order-2" />
+                    <Section css_class="print:order-3">
+                        <H2 css_class="pb-2">
+                            Otros intereses
+                        </H2>
+                        <div>
+                            <H3>
+                                Homelab
+                            </H3>
+                            <p>
+                                Construida una red L3 de 10Gb sobre fibra óptica OM4 casi en su totalidad, con un par de
+                                servidores, dos routers, tres switches y dos AP.
+                                Todos los servicios (DNS, DHCP, bloqueo de anuncios) están virtualizados sobre Proxmox.
+                                El hipervisor está conectado al servidor de almacenamiento con un cable DAC de 40Gb.
+                                Una segunda red L2 sirve de red de administración. conectada a interfaces de administración
+                                dedicadas, sin emplear routers, solo mediante switches y direcciones IP estáticas,
+                                aunque usando como punto de acceso remoto un router en máquina virtual (VPN Tailscale).
+                            </p>
+                            <H3 css_class="pt-2">
+                                Informática
+                            </H3>
+                            <p>
+                                Interés particular en motores de consulta de databases distribuidas y almacenamiento en
+                                columnas, videojuegos en red de escala masiva, desarrollo de sistemas operativos y
+                                estructuras de datos concurrentes sin bloqueo.
+                            </p>
+                            <H3 css_class="pt-2">
+                                Ops
+                            </H3>
+                            <p>
+                                Construcción de arquitecturas escalables y mantenibles para despliegue y entrega de
+                                software fiable. Eliminación de puntos únicos de fallo, servidores en clusteres distribuidos,
+                                testeo y despliegue automatizado, etc.
+                            </p>
+                            <H3 css_class="pt-2">
+                                Observabilidad
+                            </H3>
+                            <p>
+                                Ganar un conocimiento profundo sobre el comportamiento y rendimiento del software en la
+                                práctica solo se puede conseguir haciéndolo observable:
+                            </p>
+                            <ul class="pl-4">
+                                <li class="list-disc">
+                                    Lás métricas ofrecen una vista del rendimiento del sistema.
+                                </li>
+                                <li class="list-disc">
+                                    Los logs proporcionan un contexto detallado sobre qué evento ocurrió en un momento
+                                    determinado, en orden cronológico.
+                                </li>
+                                <li class="list-disc">
+                                    Las trazas (distribuidas) describen la cadena de eventos que el sistema fue emitiendo
+                                    hasta llegar a un punto específico, lo que ofrece un mayor detalle que los logs,
+                                    pero con menor frecuencia de muestreo.
+                                </li>
+                            </ul>
+                        </div>
+                    </Section>
+                </div>
+                <div class="row-start-2 row-end-2 col-start-2 col-end-2 flex justify-center items-center">
+                    <Picture src={profilePicture} alt="Profile picture" width="256" height="256" class="h-64 w-64 rounded-full" />
+                </div>
+            </div>
+        </div>
+    </Main>
+</ResumeLayout>

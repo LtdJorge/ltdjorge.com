@@ -1,0 +1,377 @@
+---
+import Main from '~/components/resume/Main.astro';
+import Section from '~/components/resume/Section.astro';
+import EmploymentCard from '~/components/resume/EmploymentCard.astro';
+import Badge from '~/components/resume/Badge.astro';
+import H1 from '~/components/resume/H1.astro';
+import H2 from '~/components/resume/H2.astro';
+import H3 from '~/components/resume/H3.astro';
+import ResumeLayout from '~/layouts/Resume.astro'
+
+//TODO: this is adding a !DOCTYPE every time. Is there a better solution? Is rendering a !DOCTYPE upstream even needed?
+import {experimental_AstroContainer} from 'astro/container'
+import {type Colors} from "../lib/colors";
+import EmploymentCardEntry from "../components/resume/EmploymentCardEntry.astro";
+import ChronologyItem from "../components/resume/ChronologyItem.astro";
+
+const container = await experimental_AstroContainer.create();
+
+async function badge(color: Colors, default_slot: string) {
+    return await container.renderToString(Badge, {
+        props: {color},
+        slots: {default: default_slot}
+    });
+}
+
+const english_badge = await badge('yellow', 'English');
+
+const cpp_badge = await badge('rose', 'C/C++');
+
+const python_badge = await badge('blue', 'Python');
+const rapids_badge = await badge('emerald', 'RAPIDS');
+
+const web_tech_badge = await badge('amber', 'Web technologies');
+
+const employers = [
+    {
+        name: 'Sabio España',
+        titles: [
+            {
+                label: 'Genesys PureEngage Technical Support',
+                dates: 'oct 2022 - sept 2024',
+                description:
+                    `
+                    `
+            },
+            {
+                label: 'Service Desk Engineer',
+                dates: 'mar 2022 - oct 2022',
+                description: 'Telephony solutions support in rotating team 24x7. Genesys PureEngage, PureConnect, NICE Engage for multiple clients.'
+            }
+        ]
+    },
+    {
+        name: 'Grupo Hotel Comendador',
+        titles: [
+            {
+                label: 'Maintenance technician',
+                dates: 'jan 2017 - oct 2017',
+                description: 'General maintenance of facilities, including gardens, SPA machinery and IT equipment.'
+            },
+            {
+                label: 'Kitchen and warehousing for events',
+                dates: '2014 - 2019',
+                description: 'Initially, merchandise logistics. Later, general kitchen support. Finally, dedicated cook on charcoal grill for restaurant.'
+            }
+        ]
+    }
+];
+
+import profilePicture from '~/img/profile.jpg'
+import { Picture } from 'astro:assets'
+---
+<ResumeLayout>
+    <Main>
+        <div class="flex flex-col items-center pt-4">
+            <H1 css_class="underline">
+                <Fragment>
+                    Jorge López Tello
+                </Fragment>
+            </H1>
+            <div class="flex flex-col lg:grid lg:grid-cols-3">
+                <div class="flex flex-col print:order-2">
+                    <Section css_class="print:order-1">
+                        <H2 css_class="pb-2 p-0">Contact info</H2>
+                        <ul class="pb-3">
+                            <li>📍 Toledo, Spain</li>
+                            <li>🌐 <a class="underline text-blue-600 visited:text-purple-600"
+                                     href="https://ltdjorge.com">https://ltdjorge.com</a></li>
+                            <li>⌨️ <a class="underline text-blue-600 visited:text-purple-600"
+                                      href="https://github.com/LtdJorge">github.com/LtdJorge</a></li>
+                            <li>⌨️ <a class="underline text-blue-600 visited:text-purple-600"
+                                      href="https://gitlab.com/LtdJorge">gitlab.com/LtdJorge</a></li>
+                            <li>📧 <a class="underline text-blue-600 visited:text-purple-600"
+                                     href="mailto:jorgekq@hotmail.com">jorgekq@hotmail.com</a></li>
+                        </ul>
+                    </Section>
+                    <div class="hidden print:block print:mb-8 print:order-2" />
+                    <Section css_class="order-3">
+                        <H2 css_class="pb-2">
+                            Education and certifications
+                        </H2>
+                        <EmploymentCard>
+                            <Fragment>
+                                <EmploymentCardEntry>
+                                    <Fragment slot="name">
+                                        Escuela de Organización Industrial
+                                    </Fragment>
+                                    <Fragment slot="items">
+                                        <ChronologyItem dates="2021">
+                                            <Fragment slot="label">
+                                                E-Commerce and Digital Marketing Course, Electronic Commerce
+                                                <Badge color="amber">Web technologies</Badge>
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Implemented, as final project, a fully dockerized web application serving as an online repository of
+                                                laptop specifications and a comparison and filtering engine. Frontend on Nuxt 2 and backend on Strapi
+                                                with MariaDB for source of truth + MeiliSearch for realtime searching and filtering.<br>
+                                                Also included was the full business plan for the project, with competition analysis and marketing
+                                                research.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                    </Fragment>
+                                </EmploymentCardEntry>
+                                <EmploymentCardEntry>
+                                    <Fragment slot="name">
+                                        CampusFP Emprende
+                                    </Fragment>
+                                    <Fragment slot="items">
+                                        <ChronologyItem dates="oct 2022 - sept 2024">
+                                            <Fragment slot="label">
+                                                Senior technician in 3D animation, video games and interactive environments
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Created a realistic ArchViz first-person visualization of an entire house, focused on the interior.
+                                                Used 3D Max for modelling, Substance Painter/Designer for texturing and SpeedTree for vegetation.
+                                                Finally assembled in Unity and made interactable with custom C#. Lighting information was pre-baked
+                                                for performance (static scene).
+                                            </Fragment>
+                                        </ChronologyItem>
+                                    </Fragment>
+                                </EmploymentCardEntry>
+                                <EmploymentCardEntry>
+                                    <Fragment slot="name">
+                                        NVIDIA DLI + Universidad de Málaga
+                                    </Fragment>
+                                    <Fragment slot="items">
+                                        <ChronologyItem dates="2020">
+                                            <Fragment slot="label">
+                                                Fundamentals of Deep Learning for Computer Vision
+                                                <Badge color="blue">Python</Badge>
+                                                <Badge color="emerald">RAPIDS</Badge>
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Taught by Manuel Ujaldón. Certification delivered by NVIDIA.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                        <ChronologyItem dates="2020">
+                                            <Fragment slot="label">
+                                                Fundamentals of accelerated computing with CUDA C/C++
+                                                <Badge color="rose">C/C++</Badge>
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Taught by Manuel Ujaldón. Certification delivered by NVIDIA.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                    </Fragment>
+                                </EmploymentCardEntry>
+                                <EmploymentCardEntry>
+                                    <Fragment slot="name">
+                                        CampusFP Emprende
+                                    </Fragment>
+                                    <Fragment slot="items">
+                                        <ChronologyItem>
+                                            <Fragment slot="label">
+                                                C1 Advanced
+                                                <Badge color="yellow">English</Badge>
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                201 points - Grade A (CEFR level C2)
+                                            </Fragment>
+                                        </ChronologyItem>
+                                        <ChronologyItem>
+                                            <Fragment slot="label">
+                                                B2 First
+                                                <Badge color="yellow">English</Badge>
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                176 points - Grade B
+                                            </Fragment>
+                                        </ChronologyItem>
+                                    </Fragment>
+                                </EmploymentCardEntry>
+                            </Fragment>
+                        </EmploymentCard>
+                    </Section>
+                </div>
+                <div class="flex flex-col print:order-1">
+                    <Section css_class="">
+                        <H2 css_class="pb-2">
+                            Work experience
+                        </H2>
+                        <EmploymentCard>
+                            <Fragment>
+                                <EmploymentCardEntry>
+                                    <Fragment slot="name">
+                                        Sabio España
+                                    </Fragment>
+                                    <Fragment slot="items">
+                                        <ChronologyItem dates="oct 2022 - sept 2024">
+                                            <Fragment slot="label">
+                                                Genesys PureEngage Technical Support
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                General obligations:
+                                                <br>
+                                                <p class="pl-2">
+                                                    Dedicated technician for Telefónica Soluciones' client in both Spain and Great Britain, working remotely.
+                                                    <br>
+                                                    Worked mainly with Engage services, ServiceNow and email threads with our client. Sometimes with
+                                                    NICE Engage + WFM, SAP BO and Oracle DBMS.
+                                                </p>
+                                                <br>
+                                                When tasked with supporting colleagues for a different client:
+                                                <br>
+                                                <p class="pl-2">
+                                                    Used the PureCloud API and command line tools like <i>cURL</i> and <i>jq</i> to narrow down,
+                                                    filter and list hundreds of users with wrong role/division combos, correcting them after.
+                                                </p>
+                                            </Fragment>
+                                        </ChronologyItem>
+                                        <ChronologyItem dates="mar 2022 - oct 2022">
+                                            <Fragment slot="label">
+                                                Service Desk Engineer
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Telephony solutions support in rotating team 24x7. Genesys PureEngage, PureConnect, NICE Engage for multiple clients.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                    </Fragment>
+                                </EmploymentCardEntry>
+                            </Fragment>
+                        </EmploymentCard>
+                        <EmploymentCard>
+                            <Fragment>
+                                <EmploymentCardEntry>
+                                    <Fragment slot="name">
+                                        Grupo Hotel Comendador
+                                    </Fragment>
+                                    <Fragment slot="items">
+                                        <ChronologyItem dates="sept 2018 - present">
+                                            <Fragment slot="label">
+                                                Webmaster
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Deployment and maintenance of the new website, for non-technical team of
+                                                editors. Digital Ocean, Ubuntu Server LTS, Nginx, PHP-FPM, MariaDB,
+                                                WordPress and Cloudflare.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                        <ChronologyItem dates="jan 2017 - oct 2017">
+                                            <Fragment slot="label">
+                                                Maintenance technician
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                General maintenance of facilities, including gardens, SPA machinery and IT equipment.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                        <ChronologyItem dates="2014 - 2019">
+                                            <Fragment slot="label">
+                                                Kitchen and warehousing for events
+                                            </Fragment>
+                                            <Fragment slot="description">
+                                                Initially, merchandise logistics. Later, general kitchen support.
+                                                Finally, dedicated cook on charcoal grill for restaurant.
+                                            </Fragment>
+                                        </ChronologyItem>
+                                    </Fragment>
+                                </EmploymentCardEntry>
+                            </Fragment>
+                        </EmploymentCard>
+
+                    </Section>
+                </div>
+                <div class="flex flex-col print:order-4">
+                    <Section css_class="print:order-1">
+                        <H2 css_class="pb-2">
+                            Tech skills
+                        </H2>
+                        <div>
+                            <div>
+                                <Badge color="orange">Rust</Badge>
+                                <Badge color="yellow">JavaScript & TypeScript</Badge>
+                                <Badge color="rose">C/C++</Badge>
+                                <Badge color="sky">Postgres</Badge>
+                            </div>
+                            <div>
+                                <Badge color="violet">Ansible + Terraform</Badge>
+                                <Badge color="blue">Linux and Windows administration</Badge>
+                                <Badge color="amber">Web technologies</Badge>
+                            </div>
+                            <div>
+
+                                <Badge color="orange">Video-games and 3D</Badge>
+                                <Badge color="green">GPU programming</Badge>
+                                <Badge color="zinc">Command line tools</Badge>
+                            </div>
+                            <div>
+                                <Badge color="fuchsia">L2/L3 Networks</Badge>
+                                <Badge color="slate">POSIX</Badge>
+                            </div>
+                        </div>
+                    </Section>
+                    <div class="hidden print:block print:mb-2 print:order-2" />
+                    <Section css_class="print:order-3">
+                        <H2 css_class="pb-2">
+                            Other interests
+                        </H2>
+                        <div>
+                            <H3>
+                                Homelab
+                            </H3>
+                            <p>
+                                Built a 10Gb L3 home network running mostly over OM4 fiber with a few servers,
+                                two routers, three switches and two access points.
+                                All services (DNS, DHCP, AD-blocking... ) are virtualized on Proxmox.
+                                The hypervisor is connected to the storage server via a 40Gb DAC cable.
+                                A second L2 network serves as administration network and is connected to dedicated
+                                management ports on the machines. No routers are involved, only switches and static IPs,
+                                although made accessible on the outside via a virtual router VM (Tailscale VPN).
+                            </p>
+                            <H3 css_class="pt-2">
+                                Computer science
+                            </H3>
+                            <p>
+                                Particular interest in distributed database query engines and columnar storage,
+                                massive-scale networked videogames, Operating Systems development and lockless
+                                concurrent data structures.
+                            </p>
+                            <H3 css_class="pt-2">
+                                Ops
+                            </H3>
+                            <p>
+                                Building scalable and maintainable architectures for reliable software
+                                deployment and delivery. Elimination of single points of failure, distributed
+                                server clusters, automated testing and deployment, etc.
+                            </p>
+                            <H3 css_class="pt-2">
+                                Observability
+                            </H3>
+                            <p>
+                                Gaining deep knowledge about how software behaves and performs in practice can only be
+                                achieved by making it observable:
+                            </p>
+                            <ul class="pl-4">
+                                <li class="list-disc">
+                                    Metrics offer a view on the performance of the system.
+                                </li>
+                                <li class="list-disc">
+                                    Logs provide detailed context on what event occurred at some point in time, for
+                                    every event.
+                                </li>
+                                <li class="list-disc">
+                                    (Distributed) Traces describe the chain of events that the system takes to reach a
+                                    specific point, which gives even more detail on behavior than logs, but are more
+                                    coarsely sampled.
+                                </li>
+                            </ul>
+                        </div>
+                    </Section>
+                </div>
+                <div class="row-start-2 row-end-2 col-start-2 col-end-2 flex justify-center items-center">
+                    <Picture src={profilePicture} alt="Profile picture" width="256" height="256" class="h-64 w-64 rounded-full" />
+                </div>
+            </div>
+        </div>
+    </Main>
+</ResumeLayout>
