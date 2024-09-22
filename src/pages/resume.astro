@@ -1,71 +1,14 @@
 ---
+import ResumeLayout from '~/layouts/Resume.astro'
 import Main from '~/components/resume/Main.astro';
 import Section from '~/components/resume/Section.astro';
 import EmploymentCard from '~/components/resume/EmploymentCard.astro';
-import Badge from '~/components/resume/Badge.astro';
+import EmploymentCardEntry from '~/components/resume/EmploymentCardEntry.astro';
+import ChronologyItem from '~/components/resume/ChronologyItem.astro';
 import H1 from '~/components/resume/H1.astro';
 import H2 from '~/components/resume/H2.astro';
 import H3 from '~/components/resume/H3.astro';
-import ResumeLayout from '~/layouts/Resume.astro'
-
-//TODO: this is adding a !DOCTYPE every time. Is there a better solution? Is rendering a !DOCTYPE upstream even needed?
-import {experimental_AstroContainer} from 'astro/container'
-import {type Colors} from "../lib/colors";
-import EmploymentCardEntry from "../components/resume/EmploymentCardEntry.astro";
-import ChronologyItem from "../components/resume/ChronologyItem.astro";
-
-const container = await experimental_AstroContainer.create();
-
-async function badge(color: Colors, default_slot: string) {
-    return await container.renderToString(Badge, {
-        props: {color},
-        slots: {default: default_slot}
-    });
-}
-
-const english_badge = await badge('yellow', 'English');
-
-const cpp_badge = await badge('rose', 'C/C++');
-
-const python_badge = await badge('blue', 'Python');
-const rapids_badge = await badge('emerald', 'RAPIDS');
-
-const web_tech_badge = await badge('amber', 'Web technologies');
-
-const employers = [
-    {
-        name: 'Sabio España',
-        titles: [
-            {
-                label: 'Genesys PureEngage Technical Support',
-                dates: 'oct 2022 - sept 2024',
-                description:
-                    `
-                    `
-            },
-            {
-                label: 'Service Desk Engineer',
-                dates: 'mar 2022 - oct 2022',
-                description: 'Telephony solutions support in rotating team 24x7. Genesys PureEngage, PureConnect, NICE Engage for multiple clients.'
-            }
-        ]
-    },
-    {
-        name: 'Grupo Hotel Comendador',
-        titles: [
-            {
-                label: 'Maintenance technician',
-                dates: 'jan 2017 - oct 2017',
-                description: 'General maintenance of facilities, including gardens, SPA machinery and IT equipment.'
-            },
-            {
-                label: 'Kitchen and warehousing for events',
-                dates: '2014 - 2019',
-                description: 'Initially, merchandise logistics. Later, general kitchen support. Finally, dedicated cook on charcoal grill for restaurant.'
-            }
-        ]
-    }
-];
+import Badge from '~/components/resume/Badge.astro';
 
 import profilePicture from '~/img/profile.jpg'
 import { Picture } from 'astro:assets'
@@ -91,7 +34,7 @@ import { Picture } from 'astro:assets'
                             <li>⌨️ <a class="underline text-blue-600 visited:text-purple-600"
                                       href="https://gitlab.com/LtdJorge">gitlab.com/LtdJorge</a></li>
                             <li>📧 <a class="underline text-blue-600 visited:text-purple-600"
-                                     href="mailto:jorgekq@hotmail.com">jorgekq@hotmail.com</a></li>
+                                     href="mailto:me@ltdjorge.com">me@ltdjorge.com</a></li>
                         </ul>
                     </Section>
                     <div class="hidden print:block print:mb-8 print:order-2" />
