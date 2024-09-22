@@ -1,0 +1,108 @@
+---
+import {type Colors} from "../../lib/colors";
+
+export interface Props {
+    color: Colors,
+}
+
+const { color } = Astro.props;
+
+const bg_color = () => {
+    switch (color) {
+        case 'slate':
+            return 'bg-slate-100'
+        case 'gray':
+            return 'bg-gray-100'
+        case 'zinc':
+            return 'bg-zinc-100'
+        case 'neutral':
+            return 'bg-neutral-100'
+        case 'stone':
+            return 'bg-stone-100'
+        case 'red':
+            return 'bg-red-100'
+        case 'orange':
+            return 'bg-orange-100'
+        case 'amber':
+            return 'bg-amber-100'
+        case 'yellow':
+            return 'bg-yellow-100'
+        case 'lime':
+            return 'bg-lime-100'
+        case 'green':
+            return 'bg-green-100'
+        case 'emerald':
+            return 'bg-emerald-100'
+        case 'teal':
+            return 'bg-teal-100'
+        case 'cyan':
+            return 'bg-cyan-100'
+        case 'sky':
+            return 'bg-sky-100'
+        case 'blue':
+            return 'bg-blue-100'
+        case 'indigo':
+            return 'bg-indigo-100'
+        case 'violet':
+            return 'bg-violet-100'
+        case 'purple':
+            return 'bg-purple-100'
+        case 'fuchsia':
+            return 'bg-fuchsia-100'
+        case 'pink':
+            return 'bg-pink-100'
+        case 'rose':
+            return 'bg-rose-100'
+    }
+}
+
+const text_color = () => {
+    switch (color) {
+        case 'slate':
+            return 'text-slate-700'
+        case 'gray':
+            return 'text-gray-700'
+        case 'zinc':
+            return 'text-zinc-700'
+        case 'neutral':
+            return 'text-neutral-700'
+        case 'stone':
+            return 'text-stone-700'
+        case 'red':
+            return 'text-red-700'
+        case 'orange':
+            return 'text-orange-700'
+        case 'amber':
+            return 'text-amber-700'
+        case 'yellow':
+            return 'text-yellow-700'
+        case 'lime':
+            return 'text-lime-700'
+        case 'green':
+            return 'text-green-700'
+        case 'emerald':
+            return 'text-emerald-700'
+        case 'teal':
+            return 'text-teal-700'
+        case 'cyan':
+            return 'text-cyan-700'
+        case 'sky':
+            return 'text-sky-700'
+        case 'blue':
+            return 'text-blue-700'
+        case 'indigo':
+            return 'text-indigo-700'
+        case 'violet':
+            return 'text-violet-700'
+        case 'purple':
+            return 'text-purple-700'
+        case 'fuchsia':
+            return 'text-fuchsia-700'
+        case 'pink':
+            return 'text-pink-700'
+        case 'rose':
+            return 'text-rose-700'
+    }
+}
+---
+<span class={`inline-flex items-center rounded-md ${bg_color()} px-2 py-1 text-xs font-medium ${text_color()}`}><slot /></span>

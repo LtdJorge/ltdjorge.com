@@ -1,0 +1,7 @@
+---
+interface Props {
+    css_class?: string
+}
+const {css_class} = Astro.props
+---
+<sub class={css_class ?? ''}><slot /></sub>

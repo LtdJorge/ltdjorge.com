@@ -1,0 +1,9 @@
+---
+interface Props {
+    css_class?: string
+}
+const {css_class} = Astro.props
+---
+<h4 class={(css_class ?? '') + ' text-xl'}>
+    <slot />
+</h4>
