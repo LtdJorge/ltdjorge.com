@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap'
-import playformInline from '@playform/inline';
 import playformCompress from '@playform/compress';
 
 // noinspection ES6PreferShortImport
@@ -20,9 +19,10 @@ export default defineConfig({
             }
         },
         HTML: true
-    }), playformInline({
-        Path: './src'
     })],
+    build: {
+        inlineStylesheets: "always"
+    },
     i18n: {
         defaultLocale: 'en',
         locales: localeList.map(
