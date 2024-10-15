@@ -21,7 +21,8 @@ export default defineConfig({
         HTML: true
     })],
     build: {
-        inlineStylesheets: "always"
+        inlineStylesheets: "always",
+        format: "file"
     },
     i18n: {
         defaultLocale: 'en',
