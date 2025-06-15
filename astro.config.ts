@@ -6,6 +6,8 @@ import playformCompress from '@playform/compress';
 // noinspection ES6PreferShortImport
 import {localeList} from "./src/lib/locales.ts";
 
+import mdx from '@astrojs/mdx';
+
 export default defineConfig({
     site: 'https://ltdjorge.com',
     integrations: [tailwind(), sitemap(), playformCompress({
@@ -33,4 +35,5 @@ export default defineConfig({
             prefixDefaultLocale: false,
         }
     }
+  }), mdx()],
 })
