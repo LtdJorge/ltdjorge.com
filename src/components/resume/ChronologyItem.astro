@@ -46,7 +46,9 @@ const { dates } = Astro.props;
 </li>
 
 <style>
+    @reference "../../styles/global.css";
+
     li:not(:last-child) .chronology-item {
-        @apply before:absolute before:left-[-0.5rem] before:top-[2.8rem] before:h-[calc(100%-2.4rem)] before:w-0.5 before:bg-neutral-400;
+        @apply before:absolute before:-left-2 before:top-[2.8rem] before:h-[calc(100%-2.4rem)] before:w-0.5 before:bg-neutral-400;
     }
 </style>
