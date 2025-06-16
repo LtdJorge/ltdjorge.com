@@ -105,4 +105,8 @@ const text_color = () => {
     }
 }
 ---
-<span class={`inline-flex items-center rounded-md ${bg_color()} px-2 py-1 text-xs font-medium ${text_color()}`}><slot /></span>
+<span class:list={
+    ['inline-flex', 'items-center', 'rounded-md', bg_color(), 'px-1', 'sm:px-2', 'py-1', 'text-xs', 'font-medium', text_color()]
+}>
+    <slot />
+</span>
