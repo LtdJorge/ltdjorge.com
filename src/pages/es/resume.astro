@@ -20,6 +20,7 @@ import EmailIcon from "../../components/icons/EmailIcon.astro";
 import LocationIcon from "../../components/icons/LocationIcon.astro";
 import WebIcon from "../../components/icons/WebIcon.astro";
 import Link from "../../components/Link.astro";
+import H4 from "../../components/resume/H4.astro";
 ---
 <ResumeLayout>
     <Main>
@@ -306,6 +307,54 @@ import Link from "../../components/Link.astro";
                             Otros intereses
                         </H2>
                         <div>
+                            <H3 extra_class="pt-2">
+                                Últimos proyectos
+                            </H3>
+                            <H4 extra_class="pb-1 pt-2">
+                                Desarrollo de aplicación para árbitros en evento de fútbol:
+                            </H4>
+                            <p>
+                                Aplicación web a medida para el evento de la batalla de
+                                <Link href="https://100porteros.es/eventos/">100porteros.es</Link>
+                            </p>
+                            <ul class="pl-4">
+                                <li class="list-disc">
+                                    Frontend en Nuxt3/Vue, con Pinia
+                                </li>
+                                <li class="list-disc">Backend en Supabase con autenticación, políticas RLS de PostgreSQL
+                                    e integración de resultados real-time
+                                </li>
+                                <li class="list-disc">Despliegue en Cloudflare Pages a traves de Git</li>
+                                <li class="list-disc">Entrada de datos por parte de los árbitros de cada categoría</li>
+                                <li class="list-disc">Cómputo de resultados y tablas de puntuaciones</li>
+                                <li class="list-disc">Clasificación de jugadores automatizada</li>
+                            </ul>
+
+                            <H4 extra_class="pb-1 pt-2">
+                                Sistema de grabación de seguridad
+                            </H4>
+                            <p>
+                                Instalación de un sistema de grabación de seguridad con 20 cámaras IP 4k. Selección del
+                                hardware, instalación y configuración completa:
+                            </p>
+                            <ul class="pl-4">
+                                <li class="list-disc">
+                                    Grabación de segmentos con detección de personas
+                                </li>
+                                <li class="list-disc">
+                                    Grabador a medida en Linux con discos SAS redundados en RAID 1
+                                </li>
+                                <li class="list-disc">
+                                    Decodificación y codificación de video mediante Intel Arc
+                                </li>
+                                <li class="list-disc">
+                                    Aceleración de detecciones mediante Google Coral
+                                </li>
+                                <li class="list-disc">
+                                    Construcción de dispositivo basado en Linux para monitorización en tiempo real, con
+                                    tiempos de arranque de 2 segundos
+                                </li>
+                            </ul>
                             <H3>
                                 Homelab
                             </H3>
@@ -334,27 +383,6 @@ import Link from "../../components/Link.astro";
                                 software fiable. Eliminación de puntos únicos de fallo, servidores en clusteres distribuidos,
                                 testeo y despliegue automatizado, etc.
                             </p>
-                            <H3 extra_class="pt-2">
-                                Observabilidad
-                            </H3>
-                            <p>
-                                Ganar un conocimiento profundo sobre el comportamiento y rendimiento del software en la
-                                práctica solo se puede conseguir haciéndolo observable:
-                            </p>
-                            <ul class="pl-4">
-                                <li class="list-disc">
-                                    Lás métricas ofrecen una vista del rendimiento del sistema.
-                                </li>
-                                <li class="list-disc">
-                                    Los logs proporcionan un contexto detallado sobre qué evento ocurrió en un momento
-                                    determinado, en orden cronológico.
-                                </li>
-                                <li class="list-disc">
-                                    Las trazas (distribuidas) describen la cadena de eventos que el sistema fue emitiendo
-                                    hasta llegar a un punto específico, lo que ofrece un mayor detalle que los logs,
-                                    pero con menor frecuencia de muestreo.
-                                </li>
-                            </ul>
                         </div>
                     </Section>
                 </div>
