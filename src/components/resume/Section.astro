@@ -1,13 +1,9 @@
 ---
 interface Props {
-    css_class?: string
+    extra_class?: string
 }
-const {css_class} = Astro.props
+const {extra_class} = Astro.props
 ---
-<section class={
-    (css_class ?? '')
-    + ' '
-    + `rounded-md shadow-md print:shadow-gray-400 m-3 py-2 px-6 bg-white print:mx-4 print:my-1 print:px-3`
-}>
+<section class:list= {['rounded-md shadow-md print:shadow-gray-400 m-3 py-2 px-6 bg-white print:mx-4 print:my-1 print:px-3', extra_class]}>
     <slot />
 </section>

@@ -1,6 +1,9 @@
 ---
-
+interface Props {
+    extra_class?: string
+}
+const {extra_class} = Astro.props
 ---
-<main>
+<main class:list={extra_class}>
     <slot />
 </main>

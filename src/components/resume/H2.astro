@@ -1,7 +1,9 @@
 ---
 interface Props {
-    css_class?: string
+    extra_class?: string
 }
-const {css_class} = Astro.props
+const {extra_class} = Astro.props
 ---
-<h2 class={(css_class ?? '') + ' text-md text-zinc-500 font-semibold pt-1'}><slot /></h2>
+<h2 class:list={['text-md', 'text-zinc-500', 'font-semibold', 'pt-1', extra_class]}>
+    <slot />
+</h2>

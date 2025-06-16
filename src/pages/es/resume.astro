@@ -19,20 +19,21 @@ import LinkedinIcon from "../../components/icons/LinkedinIcon.astro";
 import EmailIcon from "../../components/icons/EmailIcon.astro";
 import LocationIcon from "../../components/icons/LocationIcon.astro";
 import WebIcon from "../../components/icons/WebIcon.astro";
+import Link from "../../components/Link.astro";
 ---
 <ResumeLayout>
     <Main>
         <div class="flex flex-col items-center pt-4">
-            <H1 css_class="underline">
+            <H1 extra_class="underline">
                 <Fragment>
                     Jorge López Tello
                 </Fragment>
             </H1>
             <div class="flex flex-col lg:grid lg:grid-cols-3">
                 <div class="flex flex-col print:order-2">
-                    <Section css_class="print:order-1">
-                        <H2 css_class="pb-2 p-0">
-                            Información de contacto
+                    <Section extra_class="print:order-1">
+                        <H2 extra_class="pb-2 p-0">
+                            Información
                         </H2>
                         <ul class="pb-3">
                             <li>
@@ -41,43 +42,45 @@ import WebIcon from "../../components/icons/WebIcon.astro";
                             </li>
                             <li>
                                 <WebIcon />
-                                <a class="underline text-blue-600 visited:text-purple-600" href="https://ltdjorge.com">
+                                <Link href="https://ltdjorge.com">
                                     https://ltdjorge.com
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <EmailIcon />
-                                <a class="underline text-blue-600 visited:text-purple-600" href="mailto:me@ltdjorge.com">me@ltdjorge.com</a>
+                                <a class="underline text-blue-600 visited:text-purple-600" href="mailto:me@ltdjorge.com">
+                                    me@ltdjorge.com
+                                </a>
                             </li>
                             <li>
                                 <LinkedinIcon />
-                                <a class="underline text-blue-600 visited:text-purple-600"
-                                   href="https://www.linkedin.com/in/jorgelopeztello/">
+                                <Link href="https://www.linkedin.com/in/jorgelopeztello/">
                                     Perfil de Linkedin
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <GitHubIcon />
-                                <a class="underline text-blue-600 visited:text-purple-600" href="https://github.com/LtdJorge">
-                                github.com/LtdJorge
-                                </a>
+                                <Link href="https://github.com/LtdJorge">
+                                    github.com/LtdJorge
+                                </Link>
                             </li>
                             <li>
                                 <GitlabIcon />
-                                <a class="underline text-blue-600 visited:text-purple-600" href="https://gitlab.com/LtdJorge">
+                                <Link href="https://gitlab.com/LtdJorge">
                                     gitlab.com/LtdJorge
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <CodeIcon />
-                                <a class="underline text-blue-600 visited:text-purple-600"
-                                   href="https://github.com/LtdJorge/ltdjorge.com">Esta página es Open Source</a>
+                                <Link href="https://github.com/LtdJorge/ltdjorge.com">
+                                    Esta página es Open Source
+                                </Link>
                             </li>
                         </ul>
                     </Section>
                     <div class="hidden print:block print:mb-8 print:order-2" />
-                    <Section css_class="order-3">
-                        <H2 css_class="pb-2">
+                    <Section extra_class="order-3">
+                        <H2 extra_class="pb-2">
                             Educación y certificaciones
                         </H2>
                         <EmploymentCard>
@@ -177,8 +180,8 @@ import WebIcon from "../../components/icons/WebIcon.astro";
                     </Section>
                 </div>
                 <div class="flex flex-col print:order-1">
-                    <Section css_class="">
-                        <H2 css_class="pb-2">
+                    <Section>
+                        <H2 extra_class="pb-2">
                             Experiencia laboral
                         </H2>
                         <EmploymentCard>
@@ -269,8 +272,8 @@ import WebIcon from "../../components/icons/WebIcon.astro";
                     </Section>
                 </div>
                 <div class="flex flex-col print:order-4">
-                    <Section css_class="print:order-1">
-                        <H2 css_class="pb-2">
+                    <Section extra_class="print:order-1">
+                        <H2 extra_class="pb-2">
                             Habilidades técnicas
                         </H2>
                         <div>
@@ -298,8 +301,8 @@ import WebIcon from "../../components/icons/WebIcon.astro";
                         </div>
                     </Section>
                     <div class="hidden print:block print:mb-2 print:order-2" />
-                    <Section css_class="print:order-3">
-                        <H2 css_class="pb-2">
+                    <Section extra_class="print:order-3">
+                        <H2 extra_class={'pb-2'} >
                             Otros intereses
                         </H2>
                         <div>
@@ -315,7 +318,7 @@ import WebIcon from "../../components/icons/WebIcon.astro";
                                 dedicadas, sin emplear routers, solo mediante switches y direcciones IP estáticas,
                                 aunque usando como punto de acceso remoto un router en máquina virtual (VPN Tailscale).
                             </p>
-                            <H3 css_class="pt-2">
+                            <H3 extra_class="pt-2">
                                 Informática
                             </H3>
                             <p>
@@ -323,7 +326,7 @@ import WebIcon from "../../components/icons/WebIcon.astro";
                                 columnas, videojuegos en red de escala masiva, desarrollo de sistemas operativos y
                                 estructuras de datos concurrentes sin bloqueo.
                             </p>
-                            <H3 css_class="pt-2">
+                            <H3 extra_class="pt-2">
                                 Ops
                             </H3>
                             <p>
@@ -331,7 +334,7 @@ import WebIcon from "../../components/icons/WebIcon.astro";
                                 software fiable. Eliminación de puntos únicos de fallo, servidores en clusteres distribuidos,
                                 testeo y despliegue automatizado, etc.
                             </p>
-                            <H3 css_class="pt-2">
+                            <H3 extra_class="pt-2">
                                 Observabilidad
                             </H3>
                             <p>
@@ -356,7 +359,7 @@ import WebIcon from "../../components/icons/WebIcon.astro";
                     </Section>
                 </div>
                 <div class="row-start-2 row-end-2 col-start-2 col-end-2 flex justify-center items-center">
-                    <Picture src={profilePicture} alt="Profile picture" width="256" height="256" class="h-64 w-64 rounded-full" />
+                    <Picture src={profilePicture} alt="Foto de perfil" width="256" height="256" class="h-64 w-64 rounded-full" />
                 </div>
             </div>
         </div>

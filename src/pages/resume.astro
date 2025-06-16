@@ -16,15 +16,17 @@ import { Picture } from 'astro:assets'
 <ResumeLayout>
     <Main>
         <div class="flex flex-col items-center pt-4">
-            <H1 css_class="underline">
+            <H1 extra_class="underline">
                 <Fragment>
                     Jorge López Tello
                 </Fragment>
             </H1>
             <div class="flex flex-col lg:grid lg:grid-cols-3">
                 <div class="flex flex-col print:order-2">
-                    <Section css_class="print:order-1">
-                        <H2 css_class="pb-2 p-0">Contact info</H2>
+                    <Section extra_class="print:order-1">
+                        <H2 extra_class="pb-2 p-0">
+                            Information
+                        </H2>
                         <ul class="pb-3">
                             <li>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 inline">
@@ -87,8 +89,8 @@ import { Picture } from 'astro:assets'
                         </ul>
                     </Section>
                     <div class="hidden print:block print:mb-8 print:order-2" />
-                    <Section css_class="order-3">
-                        <H2 css_class="pb-2">
+                    <Section extra_class="order-3">
+                        <H2 extra_class="pb-2">
                             Education and certifications
                         </H2>
                         <EmploymentCard>
@@ -187,8 +189,8 @@ import { Picture } from 'astro:assets'
                     </Section>
                 </div>
                 <div class="flex flex-col print:order-1">
-                    <Section css_class="">
-                        <H2 css_class="pb-2">
+                    <Section>
+                        <H2 extra_class="pb-2">
                             Work experience
                         </H2>
                         <EmploymentCard>
@@ -274,8 +276,8 @@ import { Picture } from 'astro:assets'
                     </Section>
                 </div>
                 <div class="flex flex-col print:order-4">
-                    <Section css_class="print:order-1">
-                        <H2 css_class="pb-2">
+                    <Section extra_class="print:order-1">
+                        <H2 extra_class="pb-2">
                             Tech skills
                         </H2>
                         <div>
@@ -303,8 +305,8 @@ import { Picture } from 'astro:assets'
                         </div>
                     </Section>
                     <div class="hidden print:block print:mb-2 print:order-2" />
-                    <Section css_class="print:order-3">
-                        <H2 css_class="pb-2">
+                    <Section extra_class="print:order-3">
+                        <H2 extra_class="pb-2">
                             Other interests
                         </H2>
                         <div>
@@ -320,7 +322,7 @@ import { Picture } from 'astro:assets'
                                 management ports on the machines. No routers are involved, only switches and static IPs,
                                 although made accessible on the outside via a virtual router VM (Tailscale VPN).
                             </p>
-                            <H3 css_class="pt-2">
+                            <H3 extra_class="pt-2">
                                 Computer science
                             </H3>
                             <p>
@@ -328,7 +330,7 @@ import { Picture } from 'astro:assets'
                                 massive-scale networked videogames, Operating Systems development and lockless
                                 concurrent data structures.
                             </p>
-                            <H3 css_class="pt-2">
+                            <H3 extra_class="pt-2">
                                 Ops
                             </H3>
                             <p>
@@ -336,7 +338,7 @@ import { Picture } from 'astro:assets'
                                 deployment and delivery. Elimination of single points of failure, distributed
                                 server clusters, automated testing and deployment, etc.
                             </p>
-                            <H3 css_class="pt-2">
+                            <H3 extra_class="pt-2">
                                 Observability
                             </H3>
                             <p>
